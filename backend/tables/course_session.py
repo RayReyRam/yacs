@@ -34,3 +34,8 @@ class CourseSession(Base):
         start = datetime.combine(datetime.today(), self.time_start)
         end = datetime.combine(datetime.today(), self.time_end)
         return int((end - start).total_seconds() / 60)
+
+    def get_day_name(self):
+        """Return the day of week as a string."""
+        days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+        return days[self.day_of_week] if 0 <= self.day_of_week < 7 else None
